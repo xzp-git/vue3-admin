@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 import Layout from '@/components/layout/index.vue'
 
-const routes:Array<RouteRecordRaw> = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     component: Layout,
@@ -13,16 +13,16 @@ const routes:Array<RouteRecordRaw> = [
         name: 'Dashboard',
         component: () => import('@/views/dashboard/index.vue'),
         meta: {
-          title: 'Dashboard',
-        },
-      },
-    ],
-  },
+          title: 'Dashboard'
+        }
+      }
+    ]
+  }
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes
 })
 
 export default router

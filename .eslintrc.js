@@ -1,24 +1,44 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
+    node: true
   },
+
   extends: [
-    'plugin:vue/essential',
-    'airbnb-base',
+    'plugin:vue/vue3-recommended',
+    'eslint:recommended',
+    '@vue/typescript/recommended',
+    'prettier',
+    '@vue/eslint-config-prettier'
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module',
+    ecmaVersion: 2021
   },
-  plugins: [
-    'vue',
-    '@typescript-eslint',
-  ],
   rules: {
-    semi: [2, 'never'],
-    'linebreak-style': 'none',
-    'import/no-unresolved':'none'
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        tabWidth: 2,
+        indent: 2,
+        semi: false,
+        trailingComma: 'none',
+        endOfLine: 'auto'
+      }
+    ],
+    'no-unused-vars': 'off',
+    'vue/no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/component-definition-name-casing': 'off'
   },
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineExpose: 'readonly'
+  }
 }

@@ -1,3 +1,9 @@
-# eslint 忽略检查 (根据项目需要自行添加)
 node_modules
 dist
+*.css
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.d.ts
+*.yml
