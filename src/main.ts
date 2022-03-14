@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import router from './router'
 // 初始化css 重置css默认样式
 import 'normalize.css/normalize.css'
+
+import 'virtual:svg-icons-register'
 import initSvgIcon from '@/icons/index'
 
 import App from './App.vue'
