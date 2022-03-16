@@ -1,7 +1,58 @@
 #app {
-    .sidebar-container {
-      width: $sideBarWidth !important;
-      background-color: pink;
+  .sidebar-container {
+    height: 100%;
+    background-color: $menuBg;
+
+    // menu未收起时样式
+    &-menu:not(.el-menu--collapse) {
+      width: $sideBarWidth;
     }
+
+    // 菜单收起时的样式调整
+    .el-menu--collapse {
+      // 隐藏submenu title
+      .submenu-title,
+      .el-sub-menu__icon-arrow {
+        display: none;
+      }
+      .el-menu-tooltip__trigger {
+        padding: 0;
+        justify-content: center;
+      }
+      .el-sub-menu__title {
+        padding: 0 !important;
+        justify-content: center;
+      }
+    }
+
+    .el-sub-menu {
+      .el-sub-menu__title:hover {
+        background-color: rgb(38, 52, 69) !important;
+      }
+      .submenu-title {
+        padding-left: 12px;
+      }
+      .el-menu {
+        .el-menu-item {
+          background-color: $subMenuBg !important;
+          padding: 0;
+          span {
+            padding-left: 12px;
+          }
+          &:hover {
+            background-color: $subMenuHover !important;
+          }
+        }
+      }
+    }
+
+    .el-menu {
+      border: none;
+      .el-menu-item {
+        span {
+          padding-left: 12px;
+        }
+      }
+    }
+  }
 }
-  

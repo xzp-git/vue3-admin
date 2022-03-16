@@ -18,10 +18,11 @@
     "element-plus": "^2.0.2",
     "fast-glob": "^3.2.11",
     "normalize.css": "^8.0.1",
+    "path-browserify": "^1.0.1",
+    "pinia": "^2.0.11",
     "qs": "^6.10.3",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",

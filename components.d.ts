@@ -4,9 +4,19 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AppMain: typeof import('./src/components/Keep/AppMain.vue')['default']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElSubmenu: typeof import('element-plus/es')['ElSubmenu']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    Keep: typeof import('./src/components/Keep/index.vue')['default']
     Layout: typeof import('./src/components/layout/index.vue')['default']
+    Sidebar: typeof import('./src/components/Sidebar/Sidebar.vue')['default']
+    SidebarItem: typeof import('./src/components/Sidebar/SidebarItem.vue')['default']
+    SidebarItemLink: typeof import('./src/components/Sidebar/SidebarItemLink.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
 }

@@ -1,14 +1,14 @@
 <template>
   <div class="app-wrapper">
-    <div class="sidebar-container">Sidebar</div>
+    <div class="sidebar-container">
+      <Sidebar />
+    </div>
     <div class="main-container">
       <div class="header">
         <div class="navbar">navbar</div>
         <div class="tags-view">tagsview</div>
       </div>
-      <div class="app-main">
-        <router-view></router-view>
-      </div>
+      <app-main />
     </div>
   </div>
 </template>
@@ -22,6 +22,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    width: 0;
+    overflow: hidden;
     .header {
       background: cyan;
       .navbar {
