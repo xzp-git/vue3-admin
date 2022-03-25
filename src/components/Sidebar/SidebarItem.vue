@@ -1,13 +1,7 @@
 <template>
   <div v-if="!item.meta || !item.meta.hidden" class="sidebar-item-container">
-    <!-- 一个路由下只有一个子路由的时候 只渲染这个子路由 -->
-    <template
-      v-if="
-        theOnlyOneChildRoute &&
-        (!theOnlyOneChildRoute.children ||
-          theOnlyOneChildRoute.noShowingChildren)
-      "
-    >
+    <!-- 只渲染一个路由 并且路由只有一个子路由时直接渲染这个子路由 -->
+    <template v-if="isRenderSingleRoute && theOnlyOneChildRoute">
       <sidebar-item-link
         v-if="theOnlyOneChildRoute.meta"
         :to="resolvePath(theOnlyOneChildRoute.path)"
@@ -70,7 +64,8 @@ const showingChildNumber = computed(() => {
   })
   return children.length
 })
-
+// 是否有可渲染子路由
+const noShowingChildren = computed(() => showingChildNumber.value === 0)
 //要渲染的单个路由 如果该路由只有一个子路由 默认直接渲染这个子路由
 //theOnlyOneChildrenRoute直接通过el-menu-item 组件来渲染
 const theOnlyOneChildRoute = computed(() => {
@@ -83,10 +78,7 @@ const theOnlyOneChildRoute = computed(() => {
   if (item.value.children) {
     for (const child of item.value.children) {
       if (!child.meta || !child.meta.hidden) {
-        return {
-          ...child,
-          noShowingChildren: false
-        }
+        return child
       }
     }
   }
@@ -94,8 +86,8 @@ const theOnlyOneChildRoute = computed(() => {
   //无可渲染children时 把当前路由item作为仅有的子路由渲染
   return {
     ...props.item,
-    path: '', //resolvePath避免resolve拼接时 拼接重复
-    noShowingChildren: true // 无可渲染chiildren
+    path: '' //resolvePath避免resolve拼接时 拼接重复
+    // noShowingChildren: true // 无可渲染chiildren
   }
 })
 const icon = computed(() => {
@@ -112,6 +104,17 @@ const resolvePath = (childPath: string) => {
   }
   return path.resolve(props.basePath, childPath)
 }
+// 设置 alwaysShow: true，这样它就会忽略上面定义的规则，一直显示根路由 哪怕只有一个子路由也会显示为嵌套的路由菜单
+const alwaysShowRootMenu = computed(
+  () => props.item.meta && props.item.meta.alwaysShow
+)
+
+// 是否只有一条可渲染路由
+const isRenderSingleRoute = computed(
+  () =>
+    !alwaysShowRootMenu.value &&
+    (!theOnlyOneChildRoute.value?.children || noShowingChildren.value)
+)
 </script>
 <style lang="scss">
 .menu-icon {

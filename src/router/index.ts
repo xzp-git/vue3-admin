@@ -33,7 +33,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: 'Guide',
           icon: 'guide',
-          hidden: false
+          hidden: false,
+          activeMenu: '/documentation/index'
         }
       }
     ]
@@ -45,7 +46,8 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
     meta: {
       title: 'System',
       icon: 'lock',
-      hidden: false
+      hidden: false,
+      alwaysShow: true
     },
     children: [
       {
@@ -75,7 +77,7 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: 'Role Management',
           icon: 'list',
-          hidden: false
+          hidden: true
         }
       }
     ]

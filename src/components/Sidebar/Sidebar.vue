@@ -33,7 +33,11 @@ import computedScss from '@/hooks/computed-scss'
 const route = useRoute()
 const activeMenu = computed(() => {
   //根据路由路径对应 当前激活的菜单 页面刷新后 激活当前路由匹配的菜单
-  const { path } = route
+  const { path, meta } = route
+  //可根据meta.activeMenu指定 当前路由激活时 让哪个菜单高亮选中
+  if (meta.activeMenu) {
+    return meta.activeMenu
+  }
   return path
 })
 //scss变量
